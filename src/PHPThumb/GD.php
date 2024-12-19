@@ -968,6 +968,10 @@ class GD extends PHPThumb
      */
     public function setOptions(array $options = array())
     {
+        // fix error for php >=7.3 sizeof(): Argument #1 ($value) must be of type Countable|array, null given
+        if (!is_countable($this->options) {
+            $this->options = array();
+        }
         // we've yet to init the default options, so create them here
         if (sizeof($this->options) == 0) {
             $defaultOptions = array(
