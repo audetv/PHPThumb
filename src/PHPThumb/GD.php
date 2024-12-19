@@ -297,9 +297,9 @@ class GD extends PHPThumb
 
         // create the working image
         if (function_exists('imagecreatetruecolor')) {
-            $this->workingImage = imagecreatetruecolor($this->maxWidth, $this->maxHeight);
+            $this->workingImage = imagecreatetruecolor((int)$this->maxWidth, (int)$this->maxHeight);
         } else {
-            $this->workingImage = imagecreate($this->maxWidth, $this->maxHeight);
+            $this->workingImage = imagecreate((int)$this->maxWidth, (int)$this->maxHeight);
         }
 
         $this->preserveAlpha();
@@ -321,12 +321,12 @@ class GD extends PHPThumb
             $this->oldImage,
             0,
             0,
-            $cropX,
-            $cropY,
-            $cropWidth,
-            $cropHeight,
-            $cropWidth,
-            $cropHeight
+            (int)$cropX,
+            (int)$cropY,
+            (int)$cropWidth,
+            (int)$cropHeight,
+            (int)$cropWidth,
+            (int)$cropHeight
         );
 
         // update all the variables and resources to be correct
