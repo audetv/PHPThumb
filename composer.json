@@ -1,11 +1,11 @@
 {
-    "name": "masterexploder/phpthumb",
+    "name": "audetv/phpthumb",
     "type": "library",
     "license": "MIT",
-    "description": "A library for manipulating images in PHP.",
+    "description": "Fork of the library for manipulating images in PHP.",
     "keywords": ["image", "resize", "rotate"],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=7.3.0"
     },
     "homepage": "https://github.com/masterexploder/PHPThumb",
     "authors": [
