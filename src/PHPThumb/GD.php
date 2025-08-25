@@ -98,8 +98,20 @@ class GD extends PHPThumb
             case 'JPG':
                 $this->oldImage = imagecreatefromjpeg($this->fileName);
                 break;
-            case 'PNG':
-                $this->oldImage = imagecreatefrompng($this->fileName);
+             case 'PNG':
+                // Подавляем предупреждения при чтении PNG
+                $this->oldImage = @imagecreatefrompng($this->fileName);
+                if ($this->oldImage === false) {
+                    // Попробуем прочитать файл как строку
+                    $imageData = file_get_contents($this->fileName);
+                    if ($imageData === false) {
+                        throw new \Exception("Unable to read PNG file: {$this->fileName}");
+                    }
+                    $this->oldImage = imagecreatefromstring($imageData);
+                    if ($this->oldImage === false) {
+                        throw new \Exception("Unable to create image from PNG file: {$this->fileName}");
+                    }
+                }
                 break;
             case 'STRING':
                 $this->oldImage = imagecreatefromstring($this->fileName);
